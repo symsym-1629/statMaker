@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stat wheel maker</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div class="title">Roue de statistiques de Stand</div>
+
+        <div style="width: 80%; margin: auto; text-align: center;">
+            <p>Bienvenue sur la page de création de roue de stats de votre Stand!</p>
+            <p>Comme vous pouvez le voir, vous avez à disposition une roue qui montre les stats de votre Stand. Pour la compléter, vous pouvez faire défiler les slider pour attribuer aloués aux statistiques que vous désirez. Choisissez une couleur pour votre graphique si vous le souhaitez, sélectionnez le type de Stand que vous créez, puis mettez-lui les stats que vous voulez.</p>
+            <p>Une fous terminé, cliquer sur "Télécharger en PNG" pour obtenir l'image de votre roue de stats que vous pourrez ajouter à votre fiche!</p>
+        </div>
+
+        <div class="charactermancer">
+        
+            <img id="stats" src="img/basic.png" alt="Stand Stats" width="0" height="0">
+            <img id="stats_noring" src="img/gridless.png" alt="Stand Stats" width="0" height="0">
+            <img id="coin" src="img/Stat_wheel.png" width="0" height="0">
+            <br>
+        
+            <div class="stat-wheel">
+                <canvas id="myCanvas" width="300" height="300">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+                <br>
+                <input type="color" id="colour_radar" oninput="drawStats()" value="#ff0000">
+                <!-- <input type="checkbox" id="transparent_colour" onclick="drawStats()">Transparence</input> -->
+                <!-- <input type="checkbox" id="part5_coin" onclick="drawStats()">Partie 3</input> -->
+                <button id="imgDownloader" class="randomButton" onclick="downloadCanvas('myCanvas', 'stand_stats.png')">Télécharger en PNG</button>
+            </div>
+
+            <div>
+                <input type="radio" id="standNormal" name="mode" value="Stand normal" checked onchange="changeMode(this.value)">
+                <label for="standNormal">Stand normal</label>
+            
+                <input type="radio" id="act1" name="mode" value="Act 1" onchange="changeMode(this.value)">
+                <label for="act1">Act 1</label>
+            
+                <input type="radio" id="act2" name="mode" value="Act 2" onchange="changeMode(this.value)">
+                <label for="act2">Act 2</label>
+            
+                <input type="radio" id="act3" name="mode" value="Act 3" onchange="changeMode(this.value)">
+                <label for="act3">Act 3</label>
+            
+                <input type="radio" id="act4" name="mode" value="Act 4" onchange="changeMode(this.value)">
+                <label for="act4">Act 4</label>
+            
+                <input type="radio" id="requiem" name="mode" value="Requiem" onchange="changeMode(this.value)">
+                <label for="requiem">Requiem</label>
+            
+                <input type="radio" id="overHeaven" name="mode" value="Over Heaven" onchange="changeMode(this.value)">
+                <label for="overHeaven">Over Heaven</label>
+            </div>
+            
+        
+            <div class="stat-sliders">
+                <div id="pointsDisplay"><h2>Points à attribuer: 14</h2></div>
+                <div id="power">
+                    Power:
+                    <input type="range" name="slider_power" id="slider_power" value="1" min="0" max="6" oninput="updatePoints()">
+                    <input type="checkbox" id="s_power" onclick="drawStats()">Rang S</input>
+                </div>
+                <div id="speed">
+                    Speed:
+                    <input type="range" name="slider_speed" id="slider_speed" value="1" min="0" max="6" oninput="updatePoints()">
+                    <input type="checkbox" id="s_speed" onclick="drawStats()">Rang S</input>
+                </div>
+                <div id="range">
+                    Range:
+                    <input type="range" name="slider_range" id="slider_range" value="1" min="0" max="6" oninput="updatePoints()">
+                    <input type="checkbox" id="s_range" onclick="drawStats()">Rang S</input>
+                </div>
+                <div id="durability">
+                    Durability:
+                    <input type="range" name="slider_durability" id="slider_durability" value="1" min="0" max="6" oninput="updatePoints()">
+                    <input type="checkbox" id="s_durability" onclick="drawStats()">Rang S</input>
+                </div>
+                <div id="presicion">
+                    Precision:
+                    <input type="range" name="slider_precision" id="slider_precision" value="1" min="0" max="6" oninput="updatePoints()">
+                    <input type="checkbox" id="s_precision" onclick="drawStats()">Rang S</input>
+                </div>
+                <div id="potential">
+                    Potential:
+                    <input type="range" name="slider_potential" id="slider_potential" value="1" min="0" max="6" oninput="updatePoints()">
+                    <input type="checkbox" id="s_potential" onclick="drawStats()">Rang S</input>
+                </div>
+            
+                <input type="checkbox" id="sToQuestionmark" onclick="drawStats()">Remplacer "S" par "?"</input>
+                <div id="pimping-buttons" style="margin-top: 30px;">
+                    <button type="button" class="randomButton" onclick="randomize(0)">Statistiques aléatoires (entre E-A)</button>
+                    <button type="button" class="randomButton" onclick="randomize(1)">Statistiques aléatoires (complet)</button>
+                </div>
+            </div>
+        
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
